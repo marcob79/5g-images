@@ -92,7 +92,10 @@ jobs:
           file: ./images/${{ steps.image-info.outputs.image }}/Dockerfile.ubi
           push: false
           tags: gradiant/${{ steps.image-info.outputs.image }}:${{ steps.image-info.outputs.image_tag }}-ubi
-          build-args: version=${{ steps.image-info.outputs.image_tag }}
+#          build-args: version=${{ steps.image-info.outputs.image_tag }}
+          build-args: |
+            version=dev
+            branch=main
           platforms: ${{ steps.image-info.outputs.platforms }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
